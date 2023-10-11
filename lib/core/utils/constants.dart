@@ -10,4 +10,6 @@ abstract class AppConstants {
 //  fonts
   static const fontFamilyEn = 'Montserrat';
 
+  //image path
+  static const placeHolder = "https://i.ibb.co/ZzKy1cq/png-clipart-iphone-5s-ios-progress-bar-icon-load-the-map-loading-miscellaneous-tshirt-thumbnail.png";
 }

@@ -1,9 +1,11 @@
 import 'package:cmed_task2/config/routes/route_context.dart';
 import 'package:flutter/material.dart';
 
+import '../../presentation/character/character_screen.dart';
+
 abstract class Routes {
   //todo:: refactor this class
-  static const character = '/character';
+  static const character = '/';
   static const characterDetails = '/character_details';
 }
 
@@ -22,7 +24,7 @@ class AppRouter {
   }
 
   static _character() {
-    // return const CharacterScreen();
+    return const CharacterScreen();
   }
 
   static _characterDetails(String characterId) {
