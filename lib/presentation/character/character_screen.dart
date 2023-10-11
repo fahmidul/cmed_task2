@@ -8,10 +8,12 @@ import '../../../config/services/service_locator.dart';
 import '../../../domain/entites/character.dart';
 import '../../core/utils/assets.dart';
 import '../../core/utils/constants.dart';
+import '../../core/utils/strings.dart';
 import '../../core/utils/values.dart';
 
 import '../controllers/character/character_cubit.dart';
 import '../controllers/character/character_detail_state.dart';
+import '../widgets/common/custom_appbar.dart';
 import '../widgets/common/text_utils.dart';
 
 class CharacterScreen extends StatefulWidget {
@@ -35,10 +37,11 @@ class _CharacterScreenState extends State<CharacterScreen> {
     return BlocProvider(
       create: (context) => characterCubit,
       child: Scaffold(
+        appBar: const CustomAppbar(title: AppStrings.characterList),
         body: SafeArea(child: BlocBuilder<CharacterCubit, CharacterState>(
           builder: (context, state) {
             if (state is CharacterLoading) {
-              return  SizedBox(
+              return SizedBox(
                 height: context.setWidth(.5),
                 child: const Center(
                   child: CircularProgressIndicator(color: Colors.black),

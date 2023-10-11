@@ -15,4 +15,8 @@ abstract class AppStrings {
   static const notFoundError = 'Your request was not found';
   static const serverError = 'Server error';
   static const unknownScreen = 'Unknown screen';
+
+  /// appbar titles
+  static const characterList = 'Character List';
+  static const characterDetails = 'Character Details';
 }

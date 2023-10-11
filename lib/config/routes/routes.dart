@@ -2,6 +2,7 @@ import 'package:cmed_task2/config/routes/route_context.dart';
 import 'package:flutter/material.dart';
 
 import '../../presentation/character/character_screen.dart';
+import '../../presentation/character_details/character_details_screen.dart';
 
 abstract class Routes {
   //todo:: refactor this class
@@ -19,7 +20,7 @@ class AppRouter {
         final characterId = args as String;
         return screen(_characterDetails(characterId));
       default:
-        return unKnowunScreen();
+        return unKnownScreen();
     }
   }
 
@@ -28,6 +29,6 @@ class AppRouter {
   }
 
   static _characterDetails(String characterId) {
-    // return CharacterDetailsScreen(characterId);
+    return CharacterDetailsScreen(characterId);
   }
 }

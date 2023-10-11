@@ -7,9 +7,11 @@ import '../../data/network/dio_factory.dart';
 import '../../data/repository/character_details_repository_impl.dart';
 import '../../data/repository/character_repository_impl.dart';
 import '../../domain/repository/repositories.dart';
+import '../../domain/usecases/character/get_character_details_by_id.dart';
 import '../../domain/usecases/character/get_characters.dart';
 import '../../presentation/common/theme/theme_cubit.dart';
 import '../../presentation/controllers/character/character_cubit.dart';
+import '../../presentation/controllers/character_detail/character_detail_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -19,6 +21,7 @@ serviceLocatorStart() async {
   setupRemoteDataSource();
   setupRepositories();
   setupCharacterCubit();
+  setupCharacterDetailsCubit();
 }
 
 setupAppService() async {
@@ -51,5 +54,12 @@ setupCharacterCubit() {
   if (!GetIt.I.isRegistered<CharacterCubit>()) {
     getIt.registerLazySingleton<GetCharacters>(() => GetCharacters(getIt()));
     getIt.registerFactory<CharacterCubit>(() => CharacterCubit(getIt()));
+  }
+}
+
+setupCharacterDetailsCubit() {
+  if (!GetIt.I.isRegistered<CharacterDetailsCubit>()) {
+    getIt.registerLazySingleton<GetCharacterDetailsById>(() => GetCharacterDetailsById(getIt()));
+    getIt.registerFactory<CharacterDetailsCubit>(() => CharacterDetailsCubit(getIt()));
   }
 }

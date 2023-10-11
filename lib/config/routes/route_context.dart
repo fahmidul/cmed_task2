@@ -7,9 +7,6 @@ import '../../presentation/widgets/common/text_utils.dart';
 
 
 screen(Widget child, [PageTransitionType? type]) {
-  // return MaterialPageRoute(
-  //   builder: (context) => child,
-  // );
   return PageTransition(
     child: child,
     type: type ?? PageTransitionType.rightToLeftWithFade,
@@ -19,7 +16,7 @@ screen(Widget child, [PageTransitionType? type]) {
   );
 }
 
-unKnowunScreen() {
+unKnownScreen() {
   return MaterialPageRoute(
     builder: (context) =>  const Scaffold(
       body: Center(
