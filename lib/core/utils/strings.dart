@@ -7,6 +7,7 @@ abstract class AppStrings {
   static const somethingWentWrong = 'Something went wrong';
   static const connectionTimeout = 'Connection Time out';
   static const receiveTimeout = 'Server timeout';
+  static const sendTimeout = 'Send timeout';
   static const badCertificate = 'Bad certifications';
   static const cancelServer = 'Server request was canceled';
   static const connectionError = 'No Internet Connection';

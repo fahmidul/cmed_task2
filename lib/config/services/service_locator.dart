@@ -15,7 +15,9 @@ setupAppService() async {
   setupThemeService();
 }
 
-void setupThemeService() {}
+void setupThemeService() {
+
+}
 
 setupAPIService() {}
 
