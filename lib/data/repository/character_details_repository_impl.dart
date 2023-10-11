@@ -7,6 +7,7 @@ import '../../core/utils/strings.dart';
 import '../../domain/entites/character_details.dart';
 import '../../domain/repository/repositories.dart';
 import '../data_source/character_remote_data_source.dart';
+import 'package:dio/dio.dart';
 
 class CharacterDetailRepositoryImpl implements CharacterDetailsRepository {
   final CharacterRemoteDataSource _remote;
@@ -16,12 +17,18 @@ class CharacterDetailRepositoryImpl implements CharacterDetailsRepository {
 
   @override
   Future<Either<Failure, CharacterDetails>> getCharacterDetail({required String characterId}) async {
-
+    try {
       if (!await _networkInfo.isConnected) {
-        Left(ServerFailure(AppStrings.internetConnectionError));
+        return const Left(ServerFailure(AppStrings.internetConnectionError));
       }
       final response = await _remote.getCharacterDetails(characterId: characterId);
       return Right(response.toDomain());
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDiorError(e));
+      }
 
+      return Left(ServerFailure(e.toString()));
+    }
   }
 }

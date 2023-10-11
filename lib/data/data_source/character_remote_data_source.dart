@@ -29,7 +29,7 @@ class CharacterRemoteDataSourceImpl implements CharacterRemoteDataSource {
 
   @override
   Future<CharacterDetailsModel> getCharacterDetails({required String characterId}) async {
-
+    try {
       //todo refactor below lines
       Response response = await _dio.get("${AppConstants.baseUrl}${AppConstants.getCharacterDetails}/$characterId");
       List<dynamic> dynamicListData = response.data;
@@ -37,9 +37,10 @@ class CharacterRemoteDataSourceImpl implements CharacterRemoteDataSource {
         CharacterDetailsModel characterDetails = CharacterDetailsModel.fromJson(dynamicListData.first);
         return characterDetails;
       } else {
-
         throw Exception('No character details found');
       }
-
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 }
